@@ -20,12 +20,7 @@ const user = {
   setRepositories(repositories) {
     this.repositories = repositories;
   },
-  // setEvents(create) {
-  //   this.create = create;
-  // },
-  // setPush(push) {
-  //   this.push = push;
-  // },
+
 };
 
 export { user };

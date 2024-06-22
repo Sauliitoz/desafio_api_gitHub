@@ -15,6 +15,7 @@ document.getElementById("btn-search").addEventListener("click", () => {
   getUserData(userName);
   push(userName);
   create(userName);
+  document.querySelector(".events").style.visibility = "visible";
 });
 //continuação do item a cima
 document.getElementById("input-search").addEventListener("keyup", (e) => {
@@ -27,6 +28,7 @@ document.getElementById("input-search").addEventListener("keyup", (e) => {
     getUserData(userName);
     push(userName);
     create(userName);
+    document.querySelector(".events").style.visibility = "visible";
   }
 });
 //validação de valor digitado no campo imput
@@ -50,6 +52,7 @@ async function getUserData(userName) {
   user.setInfo(userResponse);
   user.setRepositories(repositoriesResponse);
   screen.renderUser(user);
+
 }
 
 export { getUserData };

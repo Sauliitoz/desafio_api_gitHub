@@ -1,12 +1,10 @@
-import { baseUrl } from "../variables/variables.js";
+import { baseUrl, urlQuantity } from "../variables/variables.js";
 
 async function push(userName) {
     
-      const responseEvents = await fetch(`${baseUrl}/${userName}/events`);
+      const responseEvents = await fetch(`${baseUrl}/${userName}/events?per_page=${urlQuantity}`);
       const event = await responseEvents.json();
 
-      console.log(event);
-      
       const pushEvents = event.filter((event) => event.type === "PushEvent");
 
       if (pushEvents.length === 0) {
