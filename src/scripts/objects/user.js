@@ -1,11 +1,11 @@
+
 const user = {
   avatarUrl: "",
   name: "",
   bio: "",
   userName: "",
   repositories: [],
-  push:[],
-  create:[],
+  pushCreate:[],
 
   setInfo(gitHubUser) {
     this.avatarUrl = gitHubUser.avatar_url;
@@ -20,6 +20,10 @@ const user = {
   setRepositories(repositories) {
     this.repositories = repositories;
   },
+  setEvents(pushCreate){
+    this.pushCreate  = pushCreate;
+  },
+  
 
 };
 

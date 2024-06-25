@@ -155,10 +155,9 @@ main {
 .events{
   background-color:rgba(169, 169, 169, 0.867);
   border-radius: 7px;
+  padding: 10px;
 }
-.events{
-  visibility: hidden;
-}
+
 
 @media (max-width: 1280px) {
   .container {

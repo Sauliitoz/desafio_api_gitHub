@@ -1,8 +1,7 @@
 import { getUser } from "./services/user.js";
 import { getRepositories } from "./services/repositories.js";
 
-import { create } from "./services/create.js";
-import { push } from "./services/push.js";
+import { pushAndCreate } from "./services/events.js";
 
 //objects
 import { user } from "./objects/user.js";
@@ -13,9 +12,6 @@ document.getElementById("btn-search").addEventListener("click", () => {
   const userName = document.getElementById("input-search").value;
   if (validateEmptyInput(userName)) return;
   getUserData(userName);
-  push(userName);
-  create(userName);
-  document.querySelector(".events").style.visibility = "visible";
 });
 //continuação do item a cima
 document.getElementById("input-search").addEventListener("keyup", (e) => {
@@ -26,9 +22,6 @@ document.getElementById("input-search").addEventListener("keyup", (e) => {
   if (isEnterKeyPressed) {
     if (validateEmptyInput(userName)) return;
     getUserData(userName);
-    push(userName);
-    create(userName);
-    document.querySelector(".events").style.visibility = "visible";
   }
 });
 //validação de valor digitado no campo imput
@@ -48,11 +41,12 @@ async function getUserData(userName) {
   }
 
   const repositoriesResponse = await getRepositories(userName); //pegar repositório do usuário
+  const pushCreateResponse = await pushAndCreate(userName); //pegar push .json
 
   user.setInfo(userResponse);
   user.setRepositories(repositoriesResponse);
+  user.setEvents(pushCreateResponse); //setar no user.js
   screen.renderUser(user);
-
 }
 
 export { getUserData };
